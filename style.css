@@ -1,0 +1,117 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+body{
+    background-color: antiquewhite;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+nav{
+    font-family: 'Roboto Condensed', sans-serif;
+    height: 70px;
+    background-color: wheat;
+}
+nav ul{
+    display: flex;
+    align-items: center;
+    color: antiquewhite;
+    list-style-type: none;
+    height: 65px;
+    background-color: black;
+}
+nav ul li{
+    padding: 0px 10px;
+}
+.brand img{
+    width: 60px;
+    height: 60px;
+    
+}
+.brand{
+    display: flex;
+    align-items: center;
+    font-weight: bolder;
+    font-size: 1.3rem;
+    padding: 0 8px;
+}
+.container{
+    min-height: 81vh;
+    background-color: black;
+    color:white;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    display: flex;
+    width: 70%;
+    margin: 20px auto; 
+    padding: 10px;
+    border-radius: 10px;
+    
+    background-image: url('bg.png');
+}
+.songItem{
+    height: 60px;
+    display: flex;
+    margin: 20px 5px;
+    background-color: white;
+    color: black;
+    opacity: 90%;
+    justify-content:space-between;
+    align-items: center;
+    border-radius: 30px;
+}
+.timestamp{
+    margin:0 20px;
+    justify-content: center;
+    align-items: center;
+}
+.songItem img{
+    width: 45px;
+    height: 45px;
+    margin : 0 12px;
+    border-radius: 54px;
+    cursor: pointer;
+}
+.songlistplay{
+    justify-content: center;
+    align-items: center;
+}
+.songListContainer
+{
+    margin-top: 60px;
+}
+.Bottom{
+    position:sticky;
+    height: 105px;
+    align-items: center;
+    background-color: black;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-size:xx-large;
+}
+.Bottom input{
+    width: 80vw;
+    align-items: center;
+    padding: 4px 0px;
+    cursor: pointer;
+}
+.Bottom img{
+    width: 50px;
+    height: 50px;
+    padding: 4px;
+    cursor: pointer;
+}
+.songinfo
+{
+    position: absolute;
+    left: 9vw;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+.songinfo img{
+    width: 100px; 
+    height: 30px;
+}
