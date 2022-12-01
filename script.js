@@ -22,11 +22,12 @@ let songs=[
 ];
 
 songItems.forEach((element,i)=>{
+
     element.getElementsByTagName("img")[0]=songs[i].coverPath;
     element.getElementsByClassName("songName")[0].innerText=songs[i].songName;
     
 });
-//audioElement.play();
+
 gif.style.opacity=0;
 masterPlay.addEventListener('click',()=>{
 if(audioElement.paused || audioElement.currentTime<=0)
