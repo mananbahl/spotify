@@ -5,12 +5,14 @@ let masterPlay=document.getElementById('masterPlay');
 let masterForward=document.getElementById('forward');
 let masterBackward=document.getElementById('backward');
 let myProgressBar=document.getElementById('myProgressBar');
+let bottomSongName=document.getElementsByClassName('songInfoName');
 let gif=document.getElementById('gif');
+let lastclicked=null;
 let songItems=Array.from(document.getElementsByClassName('songItem'));
 
 let songs=[
     {songName: "Om Deva Deva", filePath:"songs/1.mp3", coverPath:"covers/1.jpg"},
-    {songName: "BATMAN", filepath:"songs/2.mp3", coverPath:"covers/2.jpg"},
+    {songName: "BATMAN gotham", filePath:"songs/2.mp3", coverPath:"covers/2.jpg"},
     {songName: "A Man Without Love", filePath:"songs/3.mp3", coverPath:"covers/3.jpg"},
     {songName: "Laut Aao Mahi Bhai", filePath:"songs/4.mp3", coverPath:"covers/4.jpg"},
     {songName: "Laagi Chhoote", filePath:"songs/5.mp3", coverPath:"covers/5.jpg"},
@@ -35,17 +37,34 @@ if(audioElement.paused || audioElement.currentTime<=0)
     audioElement.play();
     masterPlay.src='logo.png';
     gif.style.opacity=100;
+
 }
 else{
     audioElement.pause();
     masterPlay.src='play.png';
+    makeAllPlays();
     gif.style.opacity=0;
 }
 });
 masterForward.addEventListener('click',()=>{
+    if(lastclicked>=9) lastclicked=0;
+    else lastclicked+=1;
+    audioElement.src=songs[lastclicked].filePath;
+    audioElement.play();
+    audioElement.currentTime=0;
+    masterPlay.src='logo.png';
+    gif.style.opacity=100;
+    bottomSongName[0].innerText=songs[lastclicked].songName;
 });
 masterBackward.addEventListener('click',()=>{
-
+    if(lastclicked<=0) lastclicked=0;
+    else lastclicked-=1;
+    audioElement.src=songs[lastclicked].filePath;
+    audioElement.play();
+    audioElement.currentTime=0;
+    masterPlay.src='logo.png';
+    gif.style.opacity=100;
+    bottomSongName[0].innerText=songs[lastclicked].songName;
 });
 
 audioElement.addEventListener('timeupdate',()=>{
@@ -53,6 +72,7 @@ audioElement.addEventListener('timeupdate',()=>{
     myProgressBar.value=progress;
 })
 myProgressBar.addEventListener('change',()=>{
+    console.log(myProgressBar.value);
     audioElement.currentTime=(myProgressBar.value*audioElement.duration)/100;
 });
 const makeAllPlays=()=>{
@@ -64,8 +84,27 @@ const makeAllPlays=()=>{
 Array.from(document.getElementsByClassName('perSongPlay')).forEach((element)=>{
     element.addEventListener('click',(e)=>{
         makeAllPlays();
-        console.log(e.target);
-        e.target.src='logo.png';
+           
+            index=element.id
+            
+            if(lastclicked==index && !audioElement.paused)
+            {
+                audioElement.pause();
+                masterPlay.src='play.png';
+            }
+            else{
+
+                audioElement.src=songs[index].filePath;
+                e.target.src='logo.png';
+                audioElement.play();
+                audioElement.currentTime=0;
+                masterPlay.src='logo.png';
+                lastclicked=index;
+                gif.style.opacity=100;
+                bottomSongName[0].innerText=songs[index].songName;
+            }
+            
+
     });
 });
 
