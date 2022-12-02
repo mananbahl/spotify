@@ -44,11 +44,15 @@ nav ul li{
     font-family:Verdana, Geneva, Tahoma, sans-serif;
     display: flex;
     width: 70%;
-    margin: 20px auto; 
-    padding: 10px;
+    margin: 25px auto; 
+    padding: 20px;
     border-radius: 10px;
     
     background-image: url('bg.png');
+}
+.container h1{
+    margin-left: 10px;
+    margin-top: 15px;
 }
 .songItem{
     height: 60px;
