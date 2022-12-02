@@ -7,7 +7,7 @@ let masterBackward=document.getElementById('backward');
 let myProgressBar=document.getElementById('myProgressBar');
 let bottomSongName=document.getElementsByClassName('songInfoName');
 let gif=document.getElementById('gif');
-let lastclicked=null;
+let lastclicked=0;
 let songItems=Array.from(document.getElementsByClassName('songItem'));
 
 let songs=[
@@ -49,7 +49,9 @@ else{
 masterForward.addEventListener('click',()=>{
     if(lastclicked>=9) lastclicked=0;
     else lastclicked+=1;
+    console.log(lastclicked)
     audioElement.src=songs[lastclicked].filePath;
+    console.log(audioElement.src)
     audioElement.play();
     audioElement.currentTime=0;
     masterPlay.src='logo.png';
@@ -93,7 +95,7 @@ Array.from(document.getElementsByClassName('perSongPlay')).forEach((element)=>{
                 masterPlay.src='play.png';
             }
             else{
-
+                console.log(lastclicked);
                 audioElement.src=songs[index].filePath;
                 e.target.src='logo.png';
                 audioElement.play();
