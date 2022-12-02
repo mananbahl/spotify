@@ -87,7 +87,7 @@ Array.from(document.getElementsByClassName('perSongPlay')).forEach((element)=>{
     element.addEventListener('click',(e)=>{
         makeAllPlays();
            
-            index=element.id
+            index=parseInt(element.id);
             
             if(lastclicked==index && !audioElement.paused)
             {
@@ -95,7 +95,7 @@ Array.from(document.getElementsByClassName('perSongPlay')).forEach((element)=>{
                 masterPlay.src='play.png';
             }
             else{
-                console.log(lastclicked);
+                
                 audioElement.src=songs[index].filePath;
                 e.target.src='logo.png';
                 audioElement.play();
